@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Special Delivery ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#ffeef5);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+text-align:center;
+}
+
+.container{
+max-width:500px;
+}
+
+h1{
+font-family:'Dancing Script',cursive;
+color:#ff3f7f;
+font-size:40px;
+margin-bottom:10px;
+}
+
+.badge{
+background:#ff7aa2;
+color:white;
+padding:6px 14px;
+border-radius:20px;
+display:inline-block;
+margin-bottom:15px;
+font-size:14px;
+}
+
+.envelope{
+width:220px;
+height:140px;
+background:#ff8fb1;
+margin:auto;
+position:relative;
+cursor:pointer;
+border-radius:6px;
+transition:0.5s;
+}
+
+.envelope:before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:0;
+height:0;
+border-left:110px solid transparent;
+border-right:110px solid transparent;
+border-top:70px solid #ff6f99;
+transform-origin:top;
+transition:0.5s;
+}
+
+.open:before{
+transform:rotateX(180deg);
+}
+
+.letter{
+background:white;
+padding:20px;
+margin-top:-100px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+opacity:0;
+transform:translateY(50px);
+transition:0.7s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.title{
+font-family:'Dancing Script',cursive;
+font-size:28px;
+color:#ff3f7f;
+}
+
+.text{
+margin-top:10px;
+font-size:16px;
+line-height:1.6;
+color:#444;
+}
+
+.heart{
+position:absolute;
+color:#ff5c8a;
+animation:float 6s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-100vh)}
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+border:none;
+background:#ff5c8a;
+color:white;
+border-radius:20px;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="badge">Special Delivery 💌</div>
+
+<h1>Happy Women's Day</h1>
+<p>Something from the heart, just for you</p>
+
+<div class="envelope" id="envelope"></div>
+
+<button onclick="openLetter()">Open with Love ❤️</button>
+
+<div class="letter" id="letter">
+
+<div class="title">To My Beautiful Girl</div>
+
+<div class="text" id="message"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const text = `
+
+My Dear,
+
+Today is not just about celebrating women.
+It's about celebrating YOU.
+
+Your strength, your kindness,
+and the way you make the world brighter.
+
+You inspire me every day with your courage
+and the love you share.
+
+I'm incredibly lucky to have you in my life.
+
+Never forget how special you are.
+
+Happy Women's Day ❤️
+
+Forever yours.
+`;
+
+let i = 0;
+
+function typeWriter(){
+if(i < text.length){
+document.getElementById("message").innerHTML += text.charAt(i);
+i++;
+setTimeout(typeWriter,35);
+}
+}
+
+function openLetter(){
+
+document.getElementById("envelope").classList.add("open");
+
+setTimeout(()=>{
+document.getElementById("letter").classList.add("show");
+typeWriter();
+},600)
+
+}
+
+function hearts(){
+const heart = document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(Math.random()*20+10)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove()},6000)
+}
+
+setInterval(hearts,600)
+
+</script>
+
+</body>
+</html>
